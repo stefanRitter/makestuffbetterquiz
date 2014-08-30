@@ -1,5 +1,6 @@
-angular.module('app').controller('questionsController', [function () {
+angular.module('app').controller('questionsController', ['Question', function (Question) {
   'use strict';
   var vm = this;
-  console.log(vm);
+
+  vm.questions = Question.query();
 }]);
