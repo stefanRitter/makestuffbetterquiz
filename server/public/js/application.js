@@ -379,7 +379,7 @@ angular.module('app').factory('Question', ['$resource', function ($resource) {
   var QuestionsResource = $resource('/questions/:id', {name:'@_id'});
 
   QuestionsResource.getCategories = function () {
-    return ['biology', 'law', 'health', 'religion'];
+    return ['biology', 'physical health', 'mental wellbeing', 'culture'];
   };
 
   return QuestionsResource;
@@ -394,10 +394,41 @@ angular.module('app').controller('editQuestionController', [function () {
 angular.module('app').controller('newQuestionController', ['Question', function (Question) {
   'use strict';
   var vm = this;
-
-  vm.question = {};
-  vm.question.category = 'biology';
   vm.categories = Question.getCategories();
+
+  vm.question = new Question();
+  vm.question.categories = [];
+  vm.question.answers = [];
+
+  vm.addAnswer = function () {
+    vm.question.answers.push({
+      score: 0,
+      answer: '',
+      correct: false
+    });
+  };
+
+  vm.removeAnswer = function (index) {
+    vm.question.answers.splice(index, 1);
+  };
+
+  vm.addCategory = function (category) {
+    vm.question.categories.push(category);
+    var index = vm.categories.indexOf(category);
+    if (index >= 0) { 
+      vm.categories.splice(index, 1); 
+    }
+  };
+
+  vm.removeCategory = function (index) {
+    vm.question.categories.splice(index, 1);
+  };
+
+  vm.save = function () {
+    vm.question.$save();
+  };
+
+  vm.addAnswer();
 }]);
 
 angular.module('app').controller('questionController', [function () {

@@ -16,12 +16,22 @@ function getQuestions (request, reply) {
   });
 }
 
+function postQuestion (request, reply) {
+  console.log(request.payload);
+
+  Question.create(request.payload, function (err, created) {
+    if (err) { return reply(Boom.badImplementation(err)); }
+    reply(created);
+  });
+}
+
 
 module.exports = function (_server) {
   server = _server;
 
   [
     { method: 'GET',    path: '/questions',         config: { handler: getQuestions }},
+    { method: 'POST',   path: '/questions',         config: { handler: postQuestion }},
   ].forEach(function (route) {
     server.route(route);
   });

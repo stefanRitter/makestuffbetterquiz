@@ -4,7 +4,7 @@ angular.module('app').factory('Question', ['$resource', function ($resource) {
   var QuestionsResource = $resource('/questions/:id', {name:'@_id'});
 
   QuestionsResource.getCategories = function () {
-    return ['biology', 'law', 'health', 'religion'];
+    return ['biology', 'physical health', 'mental wellbeing', 'culture'];
   };
 
   return QuestionsResource;

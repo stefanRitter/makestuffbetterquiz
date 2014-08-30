@@ -8,14 +8,11 @@ questionSchema = mongoose.Schema({
   question:  {type: String, required: '{PATH} is required!' },
   
   answers: [{
-    answer:  {type: String,  required: '{PATH} is required!'},
-    correct: {type: Boolean, default: false},
+    answer:  {type: String, required: '{PATH} is required!'},
     score:   {type: Number, default: 0}
   }],
 
   category: [String],
-
-  type: {type: String, default: 'simple'},
 
   updatedAt:  {type: Date, default: Date.now()}
 });
