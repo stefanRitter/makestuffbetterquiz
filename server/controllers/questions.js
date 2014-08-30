@@ -40,7 +40,7 @@ module.exports = function (_server) {
 
   [
     { method: 'GET',    path: '/questions',         config: { handler: getQuestions }},
-    { method: 'GET',    path: '/questions/{id}',     config: { handler: getQuestionById }},
+    { method: 'GET',    path: '/questions/{id}',    config: { handler: getQuestionById }},
     { method: 'POST',   path: '/questions',         config: { handler: postQuestion }},
   ].forEach(function (route) {
     server.route(route);

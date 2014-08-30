@@ -1,1 +1,6 @@
-h1 show stories
+.container(ng-controller="storiesController as vm")
+  h1.margin choose a story
+  
+  div
+    .margin-top(ng-repeat="story in vm.stories")
+      a(href="/stories/{{story.name}}") {{story.name}}

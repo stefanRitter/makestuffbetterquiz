@@ -1,6 +1,6 @@
 'use strict';
 
-var Question = require('mongoose').model('Question'),
+var Story = require('mongoose').model('Story'),
     Boom = require('boom');
 
 var respondToHtml = require('../utils/respondToHtml'),
@@ -10,16 +10,18 @@ var respondToHtml = require('../utils/respondToHtml'),
 function getStories (request, reply) {
   if (respondToHtml(request, reply)) { return; }
   
-  Question.find({}, function (err, objs) {
+  Story.find({}, function (err, objs) {
     if (err) { return reply(Boom.badImplementation(err)); }
     reply(objs);
   });
 }
 
 function postStory (request, reply) {
-  Question.create(request.payload, function (err, created) {
+  delete request.payload.__v;
+  delete request.payload._id;
+  Story.findOneAndUpdate({name: request.payload.name}, request.payload, {upsert:true}, function (err, obj) {
     if (err) { return reply(Boom.badImplementation(err)); }
-    reply(created);
+    reply(obj);
   });
 }
 
@@ -27,7 +29,7 @@ function getStoryByName (request, reply) {
   if (respondToHtml(request, reply)) { return; }
   
   var id = request.params.id;
-  Question.findOne({_id: id}, function (err, found) {
+  Story.findOne({_id: id}, function (err, found) {
     if (err) { return reply(Boom.badImplementation(err)); }
     reply(found);
   });

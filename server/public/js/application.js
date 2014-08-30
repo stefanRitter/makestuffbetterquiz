@@ -443,3 +443,42 @@ angular.module('app').controller('questionsController', ['Question', function (Q
 
   vm.questions = Question.query();
 }]);
+
+angular.module('app').factory('Story', ['$resource', function ($resource) {
+  'use strict';
+
+  var QuestionsResource = $resource('/stories/:name', {name:'@name'});
+
+  QuestionsResource.getCategories = function () {
+    return ['biology', 'physical health', 'mental wellbeing', 'culture'];
+  };
+
+  return QuestionsResource;
+}]);
+
+angular.module('app').controller('editStoryController', ['Story', '$location', '$routeParams', function (Story, $location, $routeParams) {
+  'use strict';
+  var vm = this,
+      name = $routeParams.name;
+
+  if (name === 'new') {
+    vm.story = new Story();
+  } else {
+    vm.story = Story.get({name: name});
+  }
+}]);
+
+angular.module('app').controller('storiesController', ['Story', function (Story) {
+  'use strict';
+  var vm = this;
+
+  vm.stories = Story.query();
+}]);
+
+angular.module('app').controller('storyController', ['Story', '$routeParams', function (Story, $routeParams) {
+  'use strict';
+  var vm = this,
+      name = $routeParams.name;
+
+  vm.story = Story.get({name: name});
+}]);
