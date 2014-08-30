@@ -391,7 +391,7 @@ angular.module('app').controller('editQuestionController', [function () {
   console.log(vm);
 }]);
 
-angular.module('app').controller('newQuestionController', ['Question', function (Question) {
+angular.module('app').controller('newQuestionController', ['Question', '$location', function (Question, $location) {
   'use strict';
   var vm = this;
   vm.categories = Question.getCategories();
@@ -425,7 +425,10 @@ angular.module('app').controller('newQuestionController', ['Question', function 
   };
 
   vm.save = function () {
-    vm.question.$save();
+    vm.question.$save(function (data) {
+      console.log(data);
+      $location.path('/');
+     });
   };
 
   vm.addAnswer();
