@@ -18,7 +18,7 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
     .when('/questions/new',          {templateUrl: '/assets/html/questions/new'})
     .when('/questions/:id',          {templateUrl: '/assets/html/questions/show'})
     .when('/questions/:id/edit',     {templateUrl: '/assets/html/questions/edit'})
-    .otherwise({ redirectTo: '/'});
+    .otherwise({ redirectTo: '/questions'});
 });
 
 
