@@ -7,13 +7,13 @@ module.exports = {
   development: {
     datastoreURI: 'mongodb://localhost/makestuffbetterquiz',
     rootPath: rootPath,
-    port: 3040
+    port: 3060
   },
 
   test: {
     datastoreURI: 'mongodb://localhost/makestuffbetterquiz-test',
     rootPath: rootPath,
-    port: 3040
+    port: 3060
   },
 
   production: {
