@@ -3,6 +3,7 @@
 module.exports = function (config, server) {
 
   require('../controllers/questions.js')(server);
+  require('../controllers/stories.js')(server);
 
   server.route({
     method: 'GET',

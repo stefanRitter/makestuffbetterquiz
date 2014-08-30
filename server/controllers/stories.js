@@ -7,7 +7,7 @@ var respondToHtml = require('../utils/respondToHtml'),
     server = {};
 
 
-function getQuestions (request, reply) {
+function getStories (request, reply) {
   if (respondToHtml(request, reply)) { return; }
   
   Question.find({}, function (err, objs) {
@@ -16,16 +16,14 @@ function getQuestions (request, reply) {
   });
 }
 
-function postQuestion (request, reply) {
-  delete request.payload.__v;
-  delete request.payload._id;
-  Question.findOneAndUpdate({question: request.payload.question}, request.payload, {upsert:true}, function (err, created) {
+function postStory (request, reply) {
+  Question.create(request.payload, function (err, created) {
     if (err) { return reply(Boom.badImplementation(err)); }
     reply(created);
   });
 }
 
-function getQuestionById (request, reply) {
+function getStoryByName (request, reply) {
   if (respondToHtml(request, reply)) { return; }
   
   var id = request.params.id;
@@ -39,9 +37,9 @@ module.exports = function (_server) {
   server = _server;
 
   [
-    { method: 'GET',    path: '/questions',         config: { handler: getQuestions }},
-    { method: 'GET',    path: '/questions/{id}',     config: { handler: getQuestionById }},
-    { method: 'POST',   path: '/questions',         config: { handler: postQuestion }},
+    { method: 'GET',    path: '/stories',         config: { handler: getStories }},
+    { method: 'GET',    path: '/stories/{name}',  config: { handler: getStoryByName }},
+    { method: 'POST',   path: '/stories',         config: { handler: postStory }},
   ].forEach(function (route) {
     server.route(route);
   });
