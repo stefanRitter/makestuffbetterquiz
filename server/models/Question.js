@@ -13,6 +13,7 @@ questionSchema = mongoose.Schema({
   }],
 
   category: [String],
+  url: {type: String},
 
   updatedAt:  {type: Date, default: Date.now()}
 });

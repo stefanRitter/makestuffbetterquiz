@@ -6,7 +6,6 @@
       label Question?
       input(type="text" ng-model="vm.question.question")
 
-
     .form-group
       .tag(ng-repeat="category in vm.question.categories")
         {{category}}
@@ -23,7 +22,6 @@
         .tag-add(ng-repeat="category in vm.categories")
           {{category}} 
           span(ng-click="vm.addCategory(category)") +
-
 
     .form-group
       label
@@ -44,5 +42,9 @@
             .tag-remove(ng-click="vm.removeAnswer($index)")
               span remove
     
+    .form-group
+      label url to source
+      input(type="text" ng-model="vm.question.url")
+
     .form-group
       .button.red(ng-click="vm.save()") Save
