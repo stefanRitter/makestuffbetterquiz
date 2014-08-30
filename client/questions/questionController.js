@@ -18,7 +18,7 @@ angular.module('app').controller('questionController', ['Question', '$location',
   };
 
   vm.addCategory = function (category) {
-    vm.question.categories.push(category);
+    vm.question.category.push(category);
     var index = vm.categories.indexOf(category);
     if (index >= 0) { 
       vm.categories.splice(index, 1); 
@@ -26,7 +26,7 @@ angular.module('app').controller('questionController', ['Question', '$location',
   };
 
   vm.removeCategory = function (index) {
-    vm.question.categories.splice(index, 1);
+    vm.question.category.splice(index, 1);
   };
 
   vm.save = function () {
@@ -38,10 +38,11 @@ angular.module('app').controller('questionController', ['Question', '$location',
 
   if (id === 'new') {
     vm.question = new Question();
-    vm.question.categories = [];
+    vm.question.category = [];
     vm.question.answers = [];
     vm.addAnswer();
   } else {
     vm.question = Question.get({id: id});
+    vm.question.category = vm.question.category || [];
   }
 }]);

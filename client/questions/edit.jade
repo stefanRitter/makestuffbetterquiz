@@ -7,7 +7,7 @@
       input(type="text" ng-model="vm.question.question")
 
     .form-group
-      .tag(ng-repeat="category in vm.question.categories")
+      .tag(ng-repeat="category in vm.question.category")
         {{category}}
         span(ng-click="vm.removeCategory($index)") &times;
       
