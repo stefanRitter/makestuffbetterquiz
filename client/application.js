@@ -14,10 +14,8 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
   $routeProvider
-    .when('/questions',              {templateUrl: '/assets/html/questions/index'})
-    .when('/questions/new',          {templateUrl: '/assets/html/questions/new'})
-    .when('/questions/:id',          {templateUrl: '/assets/html/questions/show'})
-    .when('/questions/:id/edit',     {templateUrl: '/assets/html/questions/edit'})
+    .when('/questions',           {templateUrl: '/assets/html/questions/index'})
+    .when('/questions/:id',       {templateUrl: '/assets/html/questions/edit'})
     .otherwise({ redirectTo: '/questions'});
 });
 

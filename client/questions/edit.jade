@@ -1,2 +1,50 @@
-.container(ng-controller="editQuestionController as vm")
-  h1.margin edit question
+.container(ng-controller="questionController as vm")
+  h1.margin edit/create question
+
+  form.form
+    .form-group
+      label Question?
+      input(type="text" ng-model="vm.question.question")
+
+    .form-group
+      .tag(ng-repeat="category in vm.question.categories")
+        {{category}}
+        span(ng-click="vm.removeCategory($index)") &times;
+      
+      .form-group
+        .pull-left
+          label add category
+          input(type="text" ng-model="vm.newCategory")
+        .pull-left
+          .tag-add(ng-click="vm.addCategory(vm.newCategory)")
+            span +
+
+        .tag-add(ng-repeat="category in vm.categories")
+          {{category}} 
+          span(ng-click="vm.addCategory(category)") +
+
+    .form-group
+      label
+        | Answers ({{vm.question.answers.length}})
+        .tag-add(ng-click="vm.addAnswer()")
+          span +
+      
+      .form-answer(ng-repeat="answer in vm.question.answers")
+        .form-group
+          label Answer:
+          textarea(ng-model="answer.answer")
+        
+        .form-group
+          .form-answer-actions
+            label Score
+            input(type="number" ng-model="answer.score")
+          .form-answer-actions
+            .tag-remove(ng-click="vm.removeAnswer($index)")
+              span remove
+    
+    .form-group
+      label info blurb
+      textarea(ng-model="vm.question.url")
+
+    .form-group
+      .button.red(ng-click="vm.save()") Save

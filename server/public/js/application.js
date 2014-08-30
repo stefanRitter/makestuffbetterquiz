@@ -334,10 +334,8 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
   $routeProvider
-    .when('/questions',              {templateUrl: '/assets/html/questions/index'})
-    .when('/questions/new',          {templateUrl: '/assets/html/questions/new'})
-    .when('/questions/:id',          {templateUrl: '/assets/html/questions/show'})
-    .when('/questions/:id/edit',     {templateUrl: '/assets/html/questions/edit'})
+    .when('/questions',           {templateUrl: '/assets/html/questions/index'})
+    .when('/questions/:id',       {templateUrl: '/assets/html/questions/edit'})
     .otherwise({ redirectTo: '/questions'});
 });
 
@@ -385,20 +383,12 @@ angular.module('app').factory('Question', ['$resource', function ($resource) {
   return QuestionsResource;
 }]);
 
-angular.module('app').controller('editQuestionController', [function () {
+angular.module('app').controller('questionController', ['Question', '$location', '$routeParams', function (Question, $location, $routeParams) {
   'use strict';
-  var vm = this;
-  console.log(vm);
-}]);
+  var vm = this,
+      id = $routeParams.id;
 
-angular.module('app').controller('newQuestionController', ['Question', '$location', function (Question, $location) {
-  'use strict';
-  var vm = this;
   vm.categories = Question.getCategories();
-
-  vm.question = new Question();
-  vm.question.categories = [];
-  vm.question.answers = [];
 
   vm.addAnswer = function () {
     vm.question.answers.push({
@@ -431,13 +421,14 @@ angular.module('app').controller('newQuestionController', ['Question', '$locatio
      });
   };
 
-  vm.addAnswer();
-}]);
-
-angular.module('app').controller('questionController', [function () {
-  'use strict';
-  var vm = this;
-  console.log(vm);
+  if (id === 'new') {
+    vm.question = new Question();
+    vm.question.categories = [];
+    vm.question.answers = [];
+    vm.addAnswer();
+  } else {
+    vm.question = Question.get({id: id});
+  }
 }]);
 
 angular.module('app').controller('questionsController', ['Question', function (Question) {
