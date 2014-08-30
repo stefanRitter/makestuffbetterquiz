@@ -1,2 +1,24 @@
 .container(ng-controller="newQuestionController as vm")
   h1.margin new question
+
+  form.form
+    .form-group
+      label Question?
+      input(type="text")
+
+    
+    .form-group
+      .pull-left.margin-right
+        label Question category:
+        select(ng-model="vm.question.category" ng-options="category for category in vm.categories")
+
+      .pull-left
+        label Type of Question:
+        select
+          option(value="simple") simple
+          option(value="multiple") multiple choice
+          option(value="picture") picture
+
+    .form-group
+      label Answers
+      

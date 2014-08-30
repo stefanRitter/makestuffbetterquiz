@@ -1,5 +1,8 @@
-angular.module('app').controller('newQuestionController', [function () {
+angular.module('app').controller('newQuestionController', ['Question', function (Question) {
   'use strict';
   var vm = this;
-  console.log(vm);
+
+  vm.question = {};
+  vm.question.category = 'biology';
+  vm.categories = Question.getCategories();
 }]);

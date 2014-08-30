@@ -5,19 +5,17 @@ var mongoose = require('mongoose'),
 
 
 questionSchema = mongoose.Schema({  
-  question:  {
-    type: String,
-    required: '{PATH} is required!',
-    trim: true,
-    lowercase: true,
-    unique: true,
-    index: true
-  },
+  question:  {type: String, required: '{PATH} is required!' },
   
   answers: [{
-    answer: {type: String,  required: '{PATH} is required!'},
-    type:   {type: String,  required: '{PATH} is required!'}
+    answer:  {type: String,  required: '{PATH} is required!'},
+    correct: {type: Boolean, default: false},
+    score:   {type: Number, default: 0}
   }],
+
+  category: [String],
+
+  type: {type: String, default: 'simple'},
 
   updatedAt:  {type: Date, default: Date.now()}
 });

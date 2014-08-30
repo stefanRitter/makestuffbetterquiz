@@ -373,16 +373,31 @@ angular.module('app').controller('headerController', ['$location', '$window', fu
   };
 }]);
 
+angular.module('app').factory('Question', ['$resource', function ($resource) {
+  'use strict';
+
+  var QuestionsResource = $resource('/questions/:id', {name:'@_id'});
+
+  QuestionsResource.getCategories = function () {
+    return ['biology', 'law', 'health', 'religion'];
+  };
+
+  return QuestionsResource;
+}]);
+
 angular.module('app').controller('editQuestionController', [function () {
   'use strict';
   var vm = this;
   console.log(vm);
 }]);
 
-angular.module('app').controller('newQuestionController', [function () {
+angular.module('app').controller('newQuestionController', ['Question', function (Question) {
   'use strict';
   var vm = this;
-  console.log(vm);
+
+  vm.question = {};
+  vm.question.category = 'biology';
+  vm.categories = Question.getCategories();
 }]);
 
 angular.module('app').controller('questionController', [function () {
