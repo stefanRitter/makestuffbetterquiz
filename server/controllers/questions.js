@@ -27,10 +27,8 @@ function getQuestionById (request, reply) {
   if (respondToHtml(request, reply)) { return; }
   
   var id = request.params.id;
-  console.log('here', id);
   Question.findOne({_id: id}, function (err, found) {
     if (err) { return reply(Boom.badImplementation(err)); }
-    console.log(found);
     reply(found);
   });
 }
