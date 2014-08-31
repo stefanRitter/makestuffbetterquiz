@@ -7,12 +7,11 @@
       .button-answer(ng-click="vm.flip()") {{answer.answer}}
 
   .card(ng-show="vm.show('answer')")
-    .margin-top(ng-bind-html="vm.question.url")
+    div(ng-bind-html="vm.question.url")
     .margin-top.phone-width.right.center-block
       .button.red(ng-click="vm.next()") Next
 
   .card(ng-show="vm.show('success')")
-    .margin-top(ng-bind-html="vm.story.finalBlurb")
-    
+    div(ng-bind-html="vm.story.finalBlurb")
     .margin-top.phone-width.right.center-block
       .button.red(ng-click="vm.next()") Next
