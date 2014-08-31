@@ -15,6 +15,7 @@ questionSchema = mongoose.Schema({
   category: [String],
   url: {type: String},
   more: {type: String},
+  buttonName: {type: String, default: 'read more'},
 
   updatedAt:  {type: Date, default: Date.now()}
 });

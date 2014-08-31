@@ -51,4 +51,8 @@
       textarea(ng-model="vm.question.more")
 
     .form-group
+      label more info button name
+      input(type="text" ng-model="vm.question.buttonName")
+
+    .form-group
       .button.red(ng-click="vm.save()") Save
