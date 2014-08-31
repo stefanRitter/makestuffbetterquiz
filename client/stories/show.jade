@@ -12,6 +12,6 @@
       .button.green(ng-click="vm.next()") Next
 
   .card(ng-show="vm.show('success')")
-    div(ng-bind-html="vm.story.finalBlurb")
+    div(ng-bind-html="vm.safeHtml(vm.story.finalBlurb)")
     .margin-top.right
       .button.green(ng-click="vm.next()") Next

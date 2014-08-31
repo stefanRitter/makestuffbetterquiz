@@ -1,4 +1,4 @@
-angular.module('app').controller('storyController', ['Story', 'Question', '$routeParams', '$location', function (Story, Question, $routeParams, $location) {
+angular.module('app').controller('storyController', ['Story', 'Question', '$routeParams', '$location', '$sce', function (Story, Question, $routeParams, $location, $sce) {
   'use strict';
   var vm = this,
       name = $routeParams.name,
@@ -46,5 +46,9 @@ angular.module('app').controller('storyController', ['Story', 'Question', '$rout
       case 'success':
         return !vm.showQuestion && vm.showSuccess;
     }
+  };
+
+  vm.safeHtml = function (text) {
+    return $sce.trustAsHtml(text);
   };
 }]);
