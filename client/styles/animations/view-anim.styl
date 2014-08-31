@@ -1,0 +1,15 @@
+@keyframes slideInRight {
+  from  { transform: translateX(100%); }
+  to    { transform: translateX(0); }
+}
+
+@keyframes slideOutLeft {
+  to    { transform: translateX(-100%); }
+}
+
+
+.app-view.ng-enter
+  animation: slideInRight 0.2s both ease-in
+
+.app-view.ng-leave
+  animation: slideOutLeft 0.2s both ease-in
