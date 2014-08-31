@@ -334,14 +334,15 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
   $routeProvider
-    .when('/stories',             {templateUrl: '/assets/html/stories/index'})
-    .when('/stories/:name',       {templateUrl: '/assets/html/stories/show'})
-    .when('/stories/:name/edit',  {templateUrl: '/assets/html/stories/edit'})
+    .when('/stories',               {templateUrl: '/assets/html/stories/index'})
+    .when('/stories/:name',         {templateUrl: '/assets/html/stories/show'})
+    .when('/stories/:name/:index',  {templateUrl: '/assets/html/stories/show'})
+    .when('/stories/:name/edit',    {templateUrl: '/assets/html/stories/edit'})
 
     .when('/questions',           {templateUrl: '/assets/html/questions/index'})
     .when('/questions/:id',       {templateUrl: '/assets/html/questions/edit'})
     
-    .otherwise({ redirectTo: '/questions'});
+    .otherwise({ redirectTo: '/stories'});
 });
 
 
@@ -517,10 +518,15 @@ angular.module('app').controller('storiesController', ['Story', function (Story)
   vm.stories = Story.query();
 }]);
 
-angular.module('app').controller('storyController', ['Story', '$routeParams', function (Story, $routeParams) {
+angular.module('app').controller('storyController', ['Story', '$routeParams', '$location', function (Story, $routeParams, $location) {
   'use strict';
   var vm = this,
-      name = $routeParams.name;
+      name = $routeParams.name,
+      index = $routeParams.index;
 
   vm.story = Story.get({name: name});
+
+  if (!index) {
+    $location.path('/stories/'+name+'/0');
+  }
 }]);

@@ -3,7 +3,7 @@
   
   .questions-index
     .margin-top(ng-repeat="question in vm.questions")
-      a(href="/questions/{{question._id}}") {{question.question}}
+      a.button.green(href="/questions/{{question._id}}") {{question.question}}
 
   .margin-top
     a.button.green(href="/questions/new") create new question
