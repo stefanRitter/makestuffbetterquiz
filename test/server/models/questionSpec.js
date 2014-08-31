@@ -1,13 +1,11 @@
-/*'use strict';
+'use strict';
 
 var Lab = require('lab');
-var sinon = require('sinon');
 
 var lab = exports.lab = Lab.script();
 var describe = lab.describe;
 var it = lab.it;
 var beforeEach = lab.beforeEach;
-var afterEach = lab.afterEach;
 var expect = Lab.expect;
 
 require('../../utils/mongoUtils.js')(beforeEach);
@@ -19,12 +17,11 @@ describe('question model', function () {
 
   it('should create a new Question', function (done) {
    
-    Question.create({name: 'test'}, function (err, created) {
+    Question.create({question: 'test'}, function (err, created) {
       expect(err).to.equal(null);
-      expect(created.name).to.equal('test');
+      expect(created.question).to.equal('test');
       done();
     });
   });
 
 });
-*/
