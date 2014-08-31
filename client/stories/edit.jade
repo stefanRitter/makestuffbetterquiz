@@ -1,2 +1,25 @@
 .container(ng-controller="editStoryController as vm")
   h1.margin edit/create question
+
+  form.form
+    .form-group
+      label story name
+      input(type="text" ng-model="vm.story.name")
+    
+    .form-group
+      label questions
+      .tag(ng-repeat="question in vm.selectedQuestions")
+        {{question.question}}
+        span(ng-click="vm.removeQuestion($index, question)") &times;
+
+    .form-group
+      label add questions
+      select(ng-model="vm.nextQuestion" ng-change="vm.addQuestion()")
+        option(ng-repeat="question in vm.questions" value="{{question._id}}") {{question.question}}
+
+    .form-group
+      label success message
+      textarea(ng-model="vm.story.finalBlurb")
+
+    .form-group
+      .button.red(ng-click="vm.save()") Save

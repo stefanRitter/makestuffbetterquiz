@@ -1,14 +1,13 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    ObjectId = mongoose.Schema.ObjectId,
     schema;
 
 
 schema = mongoose.Schema({  
   name:  {type: String, required: '{PATH} is required!' },
   
-  questions: [ObjectId],
+  questions: [String],
 
   finalBlurb: {type: String, required: '{PATH} is required!' },
 

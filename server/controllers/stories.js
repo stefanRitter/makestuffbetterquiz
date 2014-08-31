@@ -28,9 +28,10 @@ function postStory (request, reply) {
 function getStoryByName (request, reply) {
   if (respondToHtml(request, reply)) { return; }
   
-  var id = request.params.id;
-  Story.findOne({_id: id}, function (err, found) {
+  var name = request.params.name;
+  Story.findOne({name: name}, function (err, found) {
     if (err) { return reply(Boom.badImplementation(err)); }
+    console.log(found);
     reply(found);
   });
 }
@@ -41,7 +42,7 @@ module.exports = function (_server) {
   [
     { method: 'GET',    path: '/stories',         config: { handler: getStories }},
     { method: 'GET',    path: '/stories/{name}',  config: { handler: getStoryByName }},
-    { method: 'POST',   path: '/stories',         config: { handler: postStory }},
+    { method: 'POST',   path: '/stories/{name}',  config: { handler: postStory }},
   ].forEach(function (route) {
     server.route(route);
   });
