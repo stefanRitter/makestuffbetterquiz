@@ -12,7 +12,8 @@ html(lang="en", itemtype="http://schema.org/WebPage" itemscope ng-app="app")
     <!--[if lt IE 7]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
+	
+	img(src="/assets/img/logo.png")
     header.small.center.margin-top(ng-controller="headerController as vm")
       a.ng-hide.margin(href="#" ng-hide="vm.hideOn('/', '/stories')" ng-click="vm.back()") Back
     
