@@ -1,7 +1,7 @@
 .container(ng-controller="storyController as vm")
   h2.margin {{vm.story.name}}
 
-  .card(ng-show="vm.show('question')")
+  .card.question(ng-show="vm.show('question')")
     h2 {{vm.question.question}}
     .margin-top(ng-repeat="answer in vm.question.answers")
       .button-answer(ng-click="vm.flip()") {{answer.answer}}
