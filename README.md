@@ -14,8 +14,8 @@
 
 ## Start manually
   
-  mongod
-  supervisor server/
+    mongod
+    supervisor server/
 
 ## Run linters, tests, and watch
 
