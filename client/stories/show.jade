@@ -8,10 +8,16 @@
 
   .card(ng-show="vm.show('answer')")
     div(ng-bind-html="vm.question.url")
-    .margin-top.right
-      .button.green(ng-click="vm.next()") Next
+    .margin-top
+      .button.black.pull-left(ng-show="vm.question.more" ng-click="vm.toggleMore()") {{vm.question.buttonName}}
+      .button.green.pull-right(ng-click="vm.next()") Next
 
   .card(ng-show="vm.show('success')")
     div(ng-bind-html="vm.safeHtml(vm.story.finalBlurb)")
-    .margin-top.right
-      .button.green(ng-click="vm.next()") Next
+    .margin-top
+      .button.green.pull-right(ng-click="vm.next()") Next
+
+  .popup(ng-show="vm.showMore")
+    .popup-content
+      .margin-top(ng-bind-html="vm.question.more")
+      .popup-close(ng-click="vm.toggleMore()") &times;

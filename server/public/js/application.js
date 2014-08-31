@@ -526,6 +526,7 @@ angular.module('app').controller('storyController', ['Story', 'Question', '$rout
 
   vm.showQuestion = true;
   vm.showSuccess = false;
+  vm.showMore = false;
 
   Story.get({name: name}).$promise.then(function (data) {
     vm.story = data;
@@ -570,5 +571,9 @@ angular.module('app').controller('storyController', ['Story', 'Question', '$rout
 
   vm.safeHtml = function (text) {
     return $sce.trustAsHtml(text);
+  };
+
+  vm.toggleMore = function () {
+    vm.showMore = !vm.showMore;
   };
 }]);
