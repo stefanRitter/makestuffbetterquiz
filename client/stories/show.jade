@@ -1,2 +1,19 @@
 .container(ng-controller="storyController as vm")
   h1.margin {{vm.story.name}}
+
+  div(ng-show="vm.showQuestion")
+    .margin-top
+      {{vm.question.question}}
+    .margin-top(ng-repeat="answer in vm.question.answers")
+      .button-answer(ng-click="vm.flip()") {{answer.answer}}
+
+  div(ng-hide="vm.showQuestion")
+    {{vm.question.url}}
+    .margin-top.phone-width.right.center-block
+      .button.red(ng-click="vm.next()") Next
+
+  div(ng-show="vm.showSuccess")
+    {{vm.story.finalBlurb}}
+    
+    .margin-top.phone-width.right.center-block
+      .button.red(ng-click="vm.next()") Next

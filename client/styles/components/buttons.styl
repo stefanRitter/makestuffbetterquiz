@@ -1,4 +1,4 @@
-.button, .button-story
+.button, .button-story, .button-answer
   display inline-block
   padding 5px 10px
   cursor pointer
@@ -13,6 +13,13 @@
     background Green
     color White
 
-.button-story
+  &.gray
+    background Gray
+    color White
+
+.button-story, .button-answer
   background Green
   width 300px
+
+.button-answer
+  background Orange

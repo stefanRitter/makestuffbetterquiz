@@ -31,7 +31,6 @@ function getStoryByName (request, reply) {
   var name = request.params.name;
   Story.findOne({name: name}, function (err, found) {
     if (err) { return reply(Boom.badImplementation(err)); }
-    console.log(found);
     reply(found);
   });
 }
