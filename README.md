@@ -8,10 +8,14 @@
     bower install
     grunt build
 
-## Start script
+## Start script (only mac)
 
     ./start
 
+## Start manually
+  
+  mongod
+  supervisor server/
 
 ## Run linters, tests, and watch
 
@@ -20,6 +24,12 @@
     grunt karma
     npm test
 
-## Start dev server
 
-    supervisor server/
+# create and edit questions
+  goto: /questions
+
+# edit a story
+  goto /stories/story_name/edit
+
+# create a new story
+  goto /stories/new/edit
