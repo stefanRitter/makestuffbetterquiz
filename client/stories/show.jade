@@ -1,21 +1,24 @@
 .container(ng-controller="storyController as vm")
   h3.uppercase.bold.margin {{vm.story.name}}
 
-  .card.question(ng-show="vm.show('question')")
-    h2 {{vm.question.question}}
-    .margin-top(ng-repeat="answer in vm.question.answers")
-      .button-answer(ng-click="vm.flip()") {{answer.answer}}
+  .flip-container(ng-show="!vm.showSuccess")
+    .flip-flipper(ng-class="{toggle: vm.flipIt}")
+      .card.question.flip-front
+        h2 {{vm.question.question}}
+        .margin-top(ng-repeat="answer in vm.question.answers")
+          .button-answer(ng-click="vm.flip()") {{answer.answer}}
 
-  .card(ng-show="vm.show('answer')")
-    div(ng-bind-html="vm.question.url")
-    .margin-top
-      .button.black.pull-left(ng-show="vm.question.more" ng-click="vm.toggleMore()") {{vm.question.buttonName}}
-      .button.green.pull-right(ng-click="vm.next()") Next
+      .card.flip-back
+        div(ng-bind-html="vm.question.url")
+        .margin-top
+          .button.black.pull-left(ng-show="vm.question.more" ng-click="vm.toggleMore()") {{vm.question.buttonName}}
+          .button.green.pull-right(ng-click="vm.next()") Next
 
-  .card(ng-show="vm.show('success')")
-    div(ng-bind-html="vm.safeHtml(vm.story.finalBlurb)")
-    .margin-top
-      .button.green.pull-right(ng-click="vm.next()") Next
+  .flip-container(ng-show="vm.showSuccess")
+    .card(ng-show="vm.show('success')")
+      div(ng-bind-html="vm.safeHtml(vm.story.finalBlurb)")
+      .margin-top
+        .button.green.pull-right(ng-click="vm.next()") Next
 
   .popup(ng-show="vm.showMore")
     .popup-content

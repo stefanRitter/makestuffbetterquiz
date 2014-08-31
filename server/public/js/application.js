@@ -524,7 +524,7 @@ angular.module('app').controller('storyController', ['Story', 'Question', '$rout
       name = $routeParams.name,
       index = $routeParams.index;
 
-  vm.showQuestion = true;
+  vm.flipIt = false;
   vm.showSuccess = false;
   vm.showMore = false;
 
@@ -555,7 +555,7 @@ angular.module('app').controller('storyController', ['Story', 'Question', '$rout
   };
 
   vm.flip = function () {
-    vm.showQuestion = false;
+    vm.flipIt = true;
   };
 
   vm.show = function (state) {
