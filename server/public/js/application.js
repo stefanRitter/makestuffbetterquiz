@@ -533,26 +533,38 @@ angular.module('app').controller('storyController', ['Story', 'Question', '$rout
     if (!index) {
       $location.path('/stories/'+name+'/0');
     } else if (index === 'success') {
+      vm.showQuestion = false;
       vm.showSuccess = true;
     } else {
       vm.question = Question.get({id: vm.story.questions[index]});
     }
-
-    vm.next = function () {
-      var len = vm.story.questions.length,
-          next = parseInt(index,10)+1;
-
-      if (index === 'success') {
-        $location.path('/');
-      } else if (next >= len) {
-        $location.path('/stories/'+name+'/success');
-      } else {
-        $location.path('/stories/'+name+'/'+next);
-      }
-    };
-
-    vm.flip = function () {
-      vm.showQuestion = false;
-    };
   });
+
+  vm.next = function () {
+    var len = vm.story.questions.length,
+        next = parseInt(index,10)+1;
+
+    if (index === 'success') {
+      $location.path('/');
+    } else if (next >= len) {
+      $location.path('/stories/'+name+'/success');
+    } else {
+      $location.path('/stories/'+name+'/'+next);
+    }
+  };
+
+  vm.flip = function () {
+    vm.showQuestion = false;
+  };
+
+  vm.show = function (state) {
+    switch (state) {
+      case 'answer':
+        return !vm.showQuestion && !vm.showSuccess;
+      case 'question':
+        return vm.showQuestion && !vm.showSuccess;
+      case 'success':
+        return !vm.showQuestion && vm.showSuccess;
+    }
+  };
 }]);
