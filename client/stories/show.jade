@@ -19,5 +19,5 @@
 
   .popup(ng-show="vm.showMore")
     .popup-content
-      .margin-top(ng-bind-html="vm.question.more")
+      .margin-top(ng-bind-html="vm.safeHtml(vm.question.more)")
       .popup-close(ng-click="vm.toggleMore()") &times;
