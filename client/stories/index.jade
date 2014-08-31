@@ -1,6 +1,6 @@
 .container(ng-controller="storiesController as vm")
-  h1.margin Check your LGBT+ IQ
-  
+  h2.margin Choose a topic
+
   div
     .margin-top(ng-repeat="story in vm.stories")
       a.button-story(href="/stories/{{story.name}}") {{story.name}}
