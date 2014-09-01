@@ -1,5 +1,7 @@
 # MakeStuffBetter Quiz
 
+Runs on [http://nodejs.org/](Node.js) and [http://www.mongodb.org/](MongoDB)
+Frameworks used: [http://hapijs.com/](Hapi.js) and [https://angularjs.org/](Angular.js)
 
 ## Setup dev environment
 
