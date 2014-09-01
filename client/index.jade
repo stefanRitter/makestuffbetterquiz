@@ -18,6 +18,7 @@ html(lang="en", itemtype="http://schema.org/WebPage" itemscope ng-app="app")
       img.logo(src="/assets/img/logo.png")
 
     .app-view(ng-view)
+      <div class="container ng-scope"><div style="max-width:500px;margin:auto;">LGBT+IQ is a resource for everyone. Part card game, part interactive learning experience, the app will set you on an educational (and interesting!) journey of LGBT+ discovery. By answering common questions, you’ll be exposed to a more current understanding of issues — and ideally greater acceptance of the LGBT+ community.</div><div class="margin"><strong>Choose a topic to learn and test your LGBT+ IQ</strong><!-- ngRepeat: story in vm.stories --><div ng-repeat="story in vm.stories" class="margin-top ng-scope"><a href="/stories/Biology of sexual orientation" class="button-story ng-binding">Biology of sexual orientation</a></div><!-- end ngRepeat: story in vm.stories --><div ng-repeat="story in vm.stories" class="margin-top ng-scope"><a href="/stories/Same-sex marriage" class="button-story ng-binding">Same-sex marriage</a></div><!-- end ngRepeat: story in vm.stories --></div></div>
 
     script(src="/assets/js/application.js")
     script.
