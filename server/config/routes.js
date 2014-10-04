@@ -34,6 +34,14 @@ module.exports = function (config, server) {
 
   server.route({
     method: 'GET',
+    path: '/admin/{param*}',
+    handler: {
+      file: 'html/admin.html'
+    }
+  });
+
+  server.route({
+    method: 'GET',
     path: '/{param*}',
     handler: function (request, reply) {
       console.log('Catch all - sending Angular app');

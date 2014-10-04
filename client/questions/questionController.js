@@ -32,7 +32,7 @@ angular.module('app').controller('questionController', ['Question', '$location',
   vm.save = function () {
     vm.question.$save(function (data) {
       console.log(data);
-      $location.path('/questions');
+      $location.path('/admin/questions');
      });
   };
 
