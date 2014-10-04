@@ -9,7 +9,7 @@ angular.module('app').controller('editStoryController', ['Story', 'Question', '$
   vm.save = function () {
     vm.story.$save(function (data) {
       console.log(data);
-      $location.path('/stories');
+      $location.path('/admin/stories');
      });
   };
 
@@ -33,6 +33,7 @@ angular.module('app').controller('editStoryController', ['Story', 'Question', '$
     });
     if (index > -1) { vm.story.questions.splice(index, 1); }
   };
+
 
   if (name === 'new') {
     vm.story = new Story();

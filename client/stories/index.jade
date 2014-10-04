@@ -1,9 +1,11 @@
 .container(ng-controller="storiesController as vm")
-  div(style="max-width:500px;margin:auto;")
+  div(style="max-width:500px;margin:auto;" ng-hide="vm.admin")
     | LGBT+IQ is a resource for everyone. Part card game, part interactive learning experience, the app will set you on an educational (and interesting!) journey of LGBT+ discovery. By answering common questions, you’ll be exposed to a more current understanding of issues — and ideally greater acceptance of the LGBT+ community.
   
+  h2.margin-top(ng-show="vm.admin") All Stories
+
   div.margin
-    strong Choose a topic to learn and test your LGBT+ IQ
+    strong(ng-hide="vm.admin") Choose a topic to learn and test your LGBT+ IQ
     .margin-top(ng-repeat="story in vm.stories")
-      a.button-story(href="/stories/{{story.name}}") {{story.name}}
+      a.button-story(href="{{vm.storyLink(story)}}") {{story.name}}
   

@@ -67,11 +67,11 @@ module.exports = function (grunt) {
         dest: 'server/public/js/vendor.js',
       },
       application: {
-        src: ['server/public/js/vendor.js', 'client/application.js', 'client/**/*.js'],
+        src: ['server/public/js/vendor.js', 'client/**/*.js', '!client/admin.js'],
         dest: 'server/public/js/application.js'
       },
       admin: {
-        src: ['server/public/js/vendor.js', 'client/admin.js', 'client/**/*.js'],
+        src: ['server/public/js/vendor.js', 'client/**/*.js', '!client/application.js'],
         dest: 'server/public/js/admin.js'
       }
     },
